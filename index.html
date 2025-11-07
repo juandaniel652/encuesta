@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encuesta - AndrosNet</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="survey-container">
+    <h1>¡Bienvenido a AndrosNet!</h1>
+    <p class="intro">
+      Gracias por confiar en nosotros y suscribirte a nuestros servicios de internet WiFi.
+      En AndrosNet trabajamos para ofrecerte una conexión rápida, estable y segura.
+    </p>
+    <p class="intro">
+      Nos gustaría conocer tu opinión para seguir mejorando. ¿Podrías ayudarnos respondiendo una breve encuesta?
+      ¡Tu experiencia es muy importante para nosotros!
+    </p>
+
+    <form id="encuestaForm">
+      <!-- Pregunta 1 -->
+      <div class="question">
+        <h3>1. ¿Cómo calificarías el proceso de instalación de tu servicio?</h3>
+        <label class="option"><input type="radio" name="instalacion" value="Muy rápido y ordenado"> Muy rápido y ordenado</label>
+        <label class="option"><input type="radio" name="instalacion" value="Aceptable"> Aceptable</label>
+        <label class="option"><input type="radio" name="instalacion" value="Lento o con inconvenientes"> Lento o con inconvenientes</label>
+      </div>
+
+      <!-- Pregunta 2 -->
+      <div class="question">
+        <h3>2. ¿El técnico o instalador te explicó claramente el funcionamiento del servicio?</h3>
+        <label class="option"><input type="radio" name="explicacion" value="Sí, muy claro"> Sí, muy claro</label>
+        <label class="option"><input type="radio" name="explicacion" value="Más o menos"> Más o menos</label>
+        <label class="option"><input type="radio" name="explicacion" value="No, me quedaron dudas"> No, me quedaron dudas</label>
+      </div>
+
+      <!-- Pregunta 3 -->
+      <div class="question">
+        <h3>3. ¿El servicio de internet funciona correctamente desde la instalación?</h3>
+        <label class="option"><input type="radio" name="funcionamiento" value="Sí, sin problemas"> Sí, sin problemas</label>
+        <label class="option"><input type="radio" name="funcionamiento" value="A veces presenta fallas"> A veces presenta fallas</label>
+        <label class="option"><input type="radio" name="funcionamiento" value="No funciona bien"> No funciona bien</label>
+      </div>
+
+      <!-- Pregunta 4 -->
+      <div class="question">
+        <h3>4. ¿Cómo fue tu experiencia con la atención al cliente o el seguimiento posterior a la instalación?</h3>
+        <label class="option"><input type="radio" name="atencion" value="Excelente"> Excelente</label>
+        <label class="option"><input type="radio" name="atencion" value="Buena"> Buena</label>
+        <label class="option"><input type="radio" name="atencion" value="Regular"> Regular</label>
+        <label class="option"><input type="radio" name="atencion" value="Mala"> Mala</label>
+      </div>
+
+      <!-- Pregunta 5 -->
+      <div class="question">
+        <h3>5. ¿Recomendarías nuestro servicio a familiares o amigos?</h3>
+        <label class="option"><input type="radio" name="recomendacion" value="Sí, sin dudar"> Sí, sin dudar</label>
+        <label class="option"><input type="radio" name="recomendacion" value="Tal vez"> Tal vez</label>
+        <label class="option"><input type="radio" name="recomendacion" value="No"> No</label>
+      </div>
+
+      <button type="submit" class="btn-submit">Enviar encuesta</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
