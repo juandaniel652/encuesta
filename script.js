@@ -1,15 +1,38 @@
-document.getElementById('encuestaForm').addEventListener('submit', function(e) {
+const campaniaForm = document.getElementById('campaniaForm');
+const encuestaForm = document.getElementById('encuestaForm');
+const crearCampania = document.getElementById('crearCampania');
+const encuesta = document.getElementById('encuesta');
+
+let datosCampania = {};
+
+campaniaForm.addEventListener('submit', function(e) {
   e.preventDefault();
 
   const formData = new FormData(this);
-  let respuestas = {};
-  for (let [key, value] of formData.entries()) {
-    respuestas[key] = value;
-  }
+  datosCampania = Object.fromEntries(formData.entries());
 
-  // Mostrar confirmación
-  alert("✅ ¡Gracias por completar la encuesta!\nTus respuestas han sido registradas correctamente.");
+  alert(`✅ Campaña "${datosCampania.nombreCampania}" creada desde ${datosCampania.fechaInicio} hasta ${datosCampania.fechaFin}`);
 
-  console.log("Respuestas del usuario:", respuestas);
+  crearCampania.style.display = 'none';
+  encuesta.style.display = 'block';
+});
+
+encuestaForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+  let respuestas = Object.fromEntries(formData.entries());
+
+  const datosCompletos = {
+    ...datosCampania,
+    respuestas
+  };
+
+  console.log("📋 Datos enviados:", datosCompletos);
+
+  alert("✅ ¡Gracias por completar la encuesta!\nTus respuestas fueron registradas correctamente.");
+
   this.reset();
+  encuesta.style.display = 'none';
+  crearCampania.style.display = 'block';
 });
