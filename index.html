@@ -36,15 +36,34 @@
       </form>
     </div>
 
+    <!-- ======= SECCIÓN CLIENTE ======= -->
+    <div id="datosCliente" style="display: none;">
+      <h1>Datos del cliente</h1>
+      <p class="intro">
+        Ingresá los datos del cliente al que corresponde esta encuesta.
+      </p>
+
+      <form id="clienteForm">
+        <div class="question">
+          <h3>Número de cliente:</h3>
+          <input type="text" name="numeroCliente" required placeholder="Ej. 00123">
+        </div>
+
+        <div class="question">
+          <h3>Nombre y apellido:</h3>
+          <input type="text" name="nombreCliente" required placeholder="Ej. Juan Domínguez">
+        </div>
+
+        <button type="submit" class="btn-submit">Continuar con encuesta</button>
+      </form>
+    </div>
+
     <!-- ======= SECCIÓN ENCUESTA ======= -->
     <div id="encuesta" style="display: none;">
-      <h1>¡Bienvenido a AndrosNet!</h1>
+      <h1>Encuesta AndrosNet</h1>
       <p class="intro">
         Gracias por confiar en nosotros y suscribirte a nuestros servicios de internet WiFi.
         En AndrosNet trabajamos para ofrecerte una conexión rápida, estable y segura.
-      </p>
-      <p class="intro">
-        Nos gustaría conocer tu opinión para seguir mejorando. ¿Podrías ayudarnos respondiendo una breve encuesta?
       </p>
 
       <form id="encuestaForm">
