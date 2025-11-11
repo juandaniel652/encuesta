@@ -1,0 +1,3 @@
+[build]
+  publish = "frontend"
+  command = "" # si es estático puro, lo dejas vacío
