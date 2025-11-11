@@ -1,8 +1,13 @@
+// backend/db.js
 import mysql from 'mysql2/promise';
 
-export const db = await mysql.createPool({
+// Configura tus credenciales:
+export const pool = mysql.createPool({
   host: 'localhost',
-  user: 'root',     // cambia según tu config
-  password: '',     // idem
-  database: 'androsnet'
+  user: 'tu_usuario_mysql',
+  password: 'tu_password_mysql',
+  database: 'androsnet_db',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
 });

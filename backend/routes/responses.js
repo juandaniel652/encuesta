@@ -1,27 +1,28 @@
 import express from 'express';
-import { db } from '../db.js';
-import { randomUUID } from 'crypto';
+import { pool } from '../db.js';
+
 const router = express.Router();
 
-// Registrar una respuesta
+// Obtener todas las respuestas
+router.get('/', async (req, res) => {
+  const [rows] = await pool.query('SELECT * FROM responses ORDER BY id DESC');
+  res.json(rows);
+});
+
+// Crear respuesta
 router.post('/', async (req, res) => {
   const { campaign_id, client_number, client_name, answers } = req.body;
-  const respId = randomUUID();
-  const now = new Date();
-
-  await db.query(
-    'INSERT INTO responses (id, campaign_id, client_number, client_name, created_at) VALUES (?,?,?,?,?)',
-    [respId, campaign_id, client_number, client_name, now]
+  const [result] = await pool.query(
+    'INSERT INTO responses (campaign_id, client_number, client_name, answers) VALUES (?, ?, ?, ?)',
+    [campaign_id, client_number, client_name, JSON.stringify(answers)]
   );
+  res.json({ id: result.insertId, success: true });
+});
 
-  for (const a of answers) {
-    const ansId = randomUUID();
-    await db.query(
-      'INSERT INTO answers (id, response_id, question_id, response_text) VALUES (?,?,?,?)',
-      [ansId, respId, a.questionId, JSON.stringify(a.response)]
-    );
-  }
-
+// Eliminar respuesta
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+  await pool.query('DELETE FROM responses WHERE id = ?', [id]);
   res.json({ success: true });
 });
 
