@@ -1,32 +1,27 @@
 import express from 'express';
 import { pool } from '../db.js';
+import { v4 as uuidv4 } from 'uuid';
 
 const router = express.Router();
 
 // Obtener todas las campañas
 router.get('/', async (req, res) => {
-  try {
-    const [rows] = await pool.query('SELECT * FROM campaigns ORDER BY id DESC');
-    res.json(rows);
-  } catch (err) {
-    console.error('Error al obtener campañas:', err);
-    res.status(500).json({ error: 'Error al obtener campañas' });
-  }
+  const [rows] = await pool.query('SELECT * FROM campaigns ORDER BY created_at DESC');
+  res.json(rows);
 });
 
 // Crear nueva campaña
 router.post('/', async (req, res) => {
-  try {
-    const { name, date_start, date_end } = req.body;
-    const [result] = await pool.query(
-      'INSERT INTO campaigns (name, date_start, date_end) VALUES (?, ?, ?)',
-      [name, date_start, date_end]
-    );
-    res.json({ id: result.insertId, name, date_start, date_end });
-  } catch (err) {
-    console.error('Error al crear campaña:', err);
-    res.status(500).json({ error: 'Error al crear campaña' });
-  }
+  const { name, date_start, date_end } = req.body;
+  const id = uuidv4();
+  const created_at = new Date();
+
+  await pool.query(
+    'INSERT INTO campaigns (id, name, date_start, date_end, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)',
+    [id, name, date_start, date_end, created_at, created_at]
+  );
+
+  res.json({ id, message: 'Campaña creada correctamente' });
 });
 
 export default router;
