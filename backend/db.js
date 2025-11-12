@@ -2,9 +2,9 @@ import mysql from 'mysql2/promise';
 
 export const pool = mysql.createPool({
   host: 'localhost',
-  user: 'tu_usuario',
-  password: 'tu_password',
-  database: 'androsnet_db'
+  user: 'root',
+  password: 'miclave123',
+  database: 'androsnet'
 });
 
 // Test conexión
